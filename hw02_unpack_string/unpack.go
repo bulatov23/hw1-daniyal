@@ -34,7 +34,7 @@ func Unpack(str string) (string, error) { // здесь получаю стро�
 	}
 	val := validate(str)
 	if val == false {
-		return "некорректная строка", nil
+		return "", ErrInvalidString
 	}
 	//var builder strings.Builder
 	previousChar := ""
