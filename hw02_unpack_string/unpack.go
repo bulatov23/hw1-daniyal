@@ -2,8 +2,6 @@ package hw02unpackstring
 
 import (
 	"errors"
-	"fmt"
-	"reflect"
 	"regexp"
 	"strconv"
 	"strings"
@@ -31,7 +29,6 @@ func validate(str string) bool {
 }
 
 func Unpack(str string) (string, error) {
-	fmt.Println(reflect.TypeOf(str[0]))
 	if str == "" {
 		return "", nil
 	}
