@@ -43,7 +43,7 @@ func Unpack(str string) (string, error) {
 			if count == 0 {
 				previousChar = string(str[:ind-1])
 			} else if count > 0 {
-				if string(str[ind-1]) == "\n" {
+				if str[ind-1] == '\n' {
 					previousChar += strings.Repeat("\\n", count-1)
 				} else {
 					previousChar += strings.Repeat(string(str[ind-1]), count-1)
