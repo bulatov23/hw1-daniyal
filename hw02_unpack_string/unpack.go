@@ -39,7 +39,7 @@ func Unpack(str string) (string, error) {
 	previousChar := ""
 	for ind, char := range str {
 		count, _ := strconv.Atoi(string(char))
-		if count == 0 {
+		if count == 0 && unicode.IsDigit(char) {
 			previousChar = str[:ind-1]
 			continue
 		}
