@@ -46,7 +46,7 @@ func Unpack(str string) (string, error) {
 				if str[ind-1] == '\n' {
 					previousChar += strings.Repeat("\\n", count-1)
 				} else {
-					previousChar += strings.Repeat(string(str[ind-1]), count-1)
+					previousChar += strings.Repeat(str[:ind-1], count-1)
 				}
 			}
 		} else if !unicode.IsDigit(char) {
