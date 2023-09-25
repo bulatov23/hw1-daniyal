@@ -10,7 +10,7 @@ import (
 
 var ErrInvalidString = errors.New("invalid string")
 
-func validate(str string) bool { // здесь я написал функцию которая валидирует строку на некорректные значени, такие как цифра в первом символе или число больше 9)
+func validate(str string) bool {
 	strArr := [10]string{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
 	for _, s := range strArr {
 		if string(str[0]) == s {
@@ -28,7 +28,7 @@ func validate(str string) bool { // здесь я написал функцию 
 	return true
 }
 
-func Unpack(str string) (string, error) { // здесь получаю строку, вызываю функцию валидации и распаковываю строку
+func Unpack(str string) (string, error) {
 	if str == "" {
 		return "", nil
 	}
