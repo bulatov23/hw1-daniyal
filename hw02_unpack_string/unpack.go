@@ -33,10 +33,9 @@ func Unpack(str string) (string, error) {
 		return "", nil
 	}
 	val := validate(str)
-	if val == false {
+	if !val {
 		return "", ErrInvalidString
 	}
-	//var builder strings.Builder
 	previousChar := ""
 	for ind, char := range str {
 		if unicode.IsDigit(char) {
