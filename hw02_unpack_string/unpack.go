@@ -2,6 +2,8 @@ package hw02unpackstring
 
 import (
 	"errors"
+	"fmt"
+	"reflect"
 	"regexp"
 	"strconv"
 	"strings"
@@ -29,6 +31,7 @@ func validate(str string) bool {
 }
 
 func Unpack(str string) (string, error) {
+	fmt.Println(reflect.TypeOf(str[0]))
 	if str == "" {
 		return "", nil
 	}
@@ -41,7 +44,7 @@ func Unpack(str string) (string, error) {
 		if unicode.IsDigit(char) {
 			count, _ := strconv.Atoi(string(char))
 			if count == 0 {
-				previousChar = string(str[:ind-1])
+				previousChar = str[:ind-1]
 			} else if count > 0 {
 				if str[ind-1] == '\n' {
 					previousChar += strings.Repeat("\\n", count-1)
