@@ -42,7 +42,7 @@ func Unpack(str string) (string, error) {
 			count, _ := strconv.Atoi(string(char))
 			if count == 0 {
 				previousChar = str[:ind-1]
-			} else if count > 0 {
+			} else {
 				if str[ind-1] == '\n' {
 					previousChar += strings.Repeat("\\n", count-1)
 				} else {
