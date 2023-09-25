@@ -50,7 +50,7 @@ func Unpack(str string) (string, error) {
 				}
 			}
 		} else if !unicode.IsDigit(char) {
-			if string(char) == "\n" {
+			if char == '\n' {
 				previousChar += "\\n"
 			} else {
 				previousChar += string(char)
