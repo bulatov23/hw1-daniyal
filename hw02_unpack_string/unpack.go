@@ -38,13 +38,13 @@ func Unpack(str string) (string, error) {
 	}
 	previousChar := ""
 	for ind, char := range str {
+		count, _ := strconv.Atoi(string(char))
+		if count == 0 {
+			previousChar = str[:ind-1]
+			continue
+		}
 		if unicode.IsDigit(char) {
-			count, _ := strconv.Atoi(string(char))
-			if count == 0 {
-				previousChar = str[:ind-1]
-			} else {
-				previousChar += strings.Repeat(string(str[ind-1]), count-1)
-			}
+			previousChar += strings.Repeat(string(str[ind-1]), count-1)
 		} else if !unicode.IsDigit(char) {
 			if char == '\n' {
 				previousChar += "\\n"
