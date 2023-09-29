@@ -39,19 +39,15 @@ func Unpack(str string) (string, error) {
 	}
 	previousChar := ""
 	for ind, char := range runes {
+		count, _ := strconv.Atoi(string(char))
+		if count == 0 && unicode.IsDigit(char) {
+			previousChar = string(runes[:ind-1])
+			continue
+		}
 		if unicode.IsDigit(char) {
-			count, _ := strconv.Atoi(string(char))
-			if count == 0 {
-				previousChar = string(runes[:ind-1])
-			} else if count > 0 {
-				if string(str[ind-1]) == "\n" {
-					previousChar += strings.Repeat("\\n", count-1)
-				} else {
-					previousChar += strings.Repeat(string(runes[ind-1]), count-1)
-				}
-			}
+			previousChar += strings.Repeat(string(runes[ind-1]), count-1)
 		} else if !unicode.IsDigit(char) {
-			if string(char) == "\n" {
+			if char == '\n' {
 				previousChar += "\\n"
 			} else {
 				previousChar += string(char)
