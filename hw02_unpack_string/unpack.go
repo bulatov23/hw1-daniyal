@@ -51,5 +51,5 @@ func Unpack(str string) (string, error) {
 			builder.WriteString(string(char))
 		}
 	}
-	return previousChar, nil
+	return builder.String(), nil
 }
