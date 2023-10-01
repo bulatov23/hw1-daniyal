@@ -29,6 +29,7 @@ func validate(str string) bool {
 }
 
 func Unpack(str string) (string, error) {
+	var builder strings.Builder
 	runes := []rune(str)
 	if str == "" {
 		return "", nil
@@ -41,13 +42,13 @@ func Unpack(str string) (string, error) {
 	for ind, char := range runes {
 		count, _ := strconv.Atoi(string(char))
 		if count == 0 && unicode.IsDigit(char) {
-			previousChar = string(runes[:ind-1])
+			builder.WriteString(string(runes[:ind-1]))
 			continue
 		}
 		if unicode.IsDigit(char) {
-			previousChar += strings.Repeat(string(runes[ind-1]), count-1)
+			builder.WriteString(strings.Repeat(string(runes[ind-1]), count-1))
 		} else if !unicode.IsDigit(char) {
-			previousChar += string(char)
+			builder.WriteString(string(char))
 		}
 	}
 	return previousChar, nil
