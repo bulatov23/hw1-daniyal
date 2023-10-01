@@ -38,7 +38,6 @@ func Unpack(str string) (string, error) {
 	if !val {
 		return "", ErrInvalidString
 	}
-	previousChar := ""
 	for ind, char := range runes {
 		count, _ := strconv.Atoi(string(char))
 		if count == 0 && unicode.IsDigit(char) {
