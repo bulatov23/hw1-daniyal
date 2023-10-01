@@ -47,11 +47,7 @@ func Unpack(str string) (string, error) {
 		if unicode.IsDigit(char) {
 			previousChar += strings.Repeat(string(runes[ind-1]), count-1)
 		} else if !unicode.IsDigit(char) {
-			if char == '\n' {
-				previousChar += "\\n"
-			} else {
-				previousChar += string(char)
-			}
+			previousChar += string(char)
 		}
 	}
 	return previousChar, nil
