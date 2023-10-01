@@ -41,6 +41,7 @@ func Unpack(str string) (string, error) {
 	for ind, char := range runes {
 		count, _ := strconv.Atoi(string(char))
 		if count == 0 && unicode.IsDigit(char) {
+			builder.Reset()
 			builder.WriteString(string(runes[:ind-1]))
 			continue
 		}
