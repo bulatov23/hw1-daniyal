@@ -2,7 +2,6 @@ package hw02unpackstring
 
 import (
 	"errors"
-	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -31,7 +30,7 @@ func validate(str string) bool {
 
 func Unpack(str string) (string, error) {
 	var builder strings.Builder
-	new_str := ""
+	newStr := ""
 	runes := []rune(str)
 	if str == "" {
 		return "", nil
@@ -43,9 +42,9 @@ func Unpack(str string) (string, error) {
 	for ind, char := range runes {
 		count, _ := strconv.Atoi(string(char))
 		if count == 0 && unicode.IsDigit(char) {
-			new_str = builder.String()[:builder.Len()-1]
+			newStr = builder.String()[:builder.Len()-1]
 			builder.Reset()
-			builder.WriteString(new_str)
+			builder.WriteString(newStr)
 			continue
 		}
 		if unicode.IsDigit(char) {
@@ -54,6 +53,5 @@ func Unpack(str string) (string, error) {
 			builder.WriteString(string(char))
 		}
 	}
-	fmt.Println(new_str)
 	return builder.String(), nil
 }
