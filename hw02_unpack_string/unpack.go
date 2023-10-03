@@ -40,6 +40,9 @@ func Unpack(str string) (string, error) {
 	}
 	for ind, char := range runes {
 		if ind == len(runes)-1 {
+			if !unicode.IsDigit(char) {
+				builder.WriteString(string(runes[ind]))
+			}
 			continue
 		}
 		count, _ := strconv.Atoi(string(runes[ind+1]))
