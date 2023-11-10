@@ -7,7 +7,7 @@ import (
 
 func Top10(str string) []string {
 	m := make(map[string]int)
-	x := strings.Split(str, " ")
+	x := strings.Fields(str)
 	var sort_str []string
 	for _, v := range x {
 		m[v] += 1
@@ -23,8 +23,13 @@ func Top10(str string) []string {
 	sort.Slice(sorted_struct, func(i, j int) bool {
 		return sorted_struct[i].Value > sorted_struct[j].Value
 	})
-	for _, key_value := range sorted_struct {
+	for i, key_value := range sorted_struct {
+		if i > 9 {
+			break
+		}
 		sort_str = append(sort_str, key_value.Key)
+
 	}
+	sort.Strings(sort_str)
 	return sort_str
 }
