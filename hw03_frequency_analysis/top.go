@@ -21,6 +21,9 @@ func Top10(str string) []string {
 		sorted_struct = append(sorted_struct, key_value{key, value})
 	}
 	sort.Slice(sorted_struct, func(i, j int) bool {
+		if sorted_struct[i].Value == sorted_struct[j].Value {
+			return x[i] < x[j]
+		}
 		return sorted_struct[i].Value > sorted_struct[j].Value
 	})
 	for i, key_value := range sorted_struct {
@@ -28,8 +31,6 @@ func Top10(str string) []string {
 			break
 		}
 		sort_str = append(sort_str, key_value.Key)
-
 	}
-	sort.Strings(sort_str)
 	return sort_str
 }
