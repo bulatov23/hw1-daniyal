@@ -22,7 +22,7 @@ func Top10(str string) []string {
 	}
 	sort.Slice(sorted_struct, func(i, j int) bool {
 		if sorted_struct[i].Value == sorted_struct[j].Value {
-			return x[i] < x[j]
+			return sorted_struct[i].Key < sorted_struct[j].Key
 		}
 		return sorted_struct[i].Value > sorted_struct[j].Value
 	})
