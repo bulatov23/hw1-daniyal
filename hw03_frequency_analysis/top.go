@@ -8,7 +8,7 @@ import (
 func Top10(str string) []string {
 	m := make(map[string]int)
 	x := strings.Fields(str)
-	var sort_str []string
+	sort_str := make([]string, 0, 20)
 	for _, v := range x {
 		m[v] += 1
 	}
@@ -16,7 +16,7 @@ func Top10(str string) []string {
 		Key   string
 		Value int
 	}
-	var sorted_struct []key_value
+	sorted_struct := make([]key_value, 0, 20)
 	for key, value := range m {
 		sorted_struct = append(sorted_struct, key_value{key, value})
 	}
