@@ -7,9 +7,9 @@ import (
 
 func Top10(str string) []string {
 	m := make(map[string]int)
-	x := strings.Fields(str)
+	wordsArr := strings.Fields(str)
 	sortStr := make([]string, 0, 20)
-	for _, v := range x {
+	for _, v := range wordsArr {
 		m[v]++
 	}
 	type keyValue struct {
